@@ -3,6 +3,7 @@
 #include <string.h>
 
 int main() {
+    // Bloco 1: Código da Batalha Completa e Interativa
     char bufferDeEntrada[100];
 
     char estado1;
@@ -116,6 +117,50 @@ int main() {
     printf("Densidade Populacional: Carta %d venceu (%d)\n", vitoria_dens ? 1 : 2, vitoria_dens);
     printf("PIB per Capita: Carta %d venceu (%d)\n", vitoria_pib_pc ? 1 : 2, vitoria_pib_pc);
     printf("Super Poder: Carta %d venceu (%d)\n", vitoria_poder ? 1 : 2, vitoria_poder);
+
+
+    // Bloco 2: Código da Batalha Simples com Cartas Pré-Definidas (Acrescentado)
+    printf("\n\n\n========================================\n");
+    printf("  DEMONSTRAÇÃO COM CARTAS PRÉ-DEFINIDAS   \n");
+    printf("========================================\n\n");
+
+    char hc_estado1[] = "SP";
+    char hc_codigoCarta1[] = "A01";
+    char hc_nomeCidade1[] = "São Paulo";
+    int hc_populacao1 = 12396372;
+    float hc_area1 = 1521.11;
+    float hc_pib1 = 763.8;
+    int hc_pontosTuristicos1 = 150;
+
+    char hc_estado2[] = "RJ";
+    char hc_codigoCarta2[] = "B01";
+    char hc_nomeCidade2[] = "Rio de Janeiro";
+    int hc_populacao2 = 6775561;
+    float hc_area2 = 1200.32;
+    float hc_pib2 = 358.5;
+    int hc_pontosTuristicos2 = 200;
+
+    float hc_densidade1, hc_pibPerCapita1;
+    float hc_densidade2, hc_pibPerCapita2;
+
+    hc_densidade1 = (float)hc_populacao1 / hc_area1;
+    hc_pibPerCapita1 = (hc_pib1 * 1000000000) / hc_populacao1;
+
+    hc_densidade2 = (float)hc_populacao2 / hc_area2;
+    hc_pibPerCapita2 = (hc_pib2 * 1000000000) / hc_populacao2;
+    
+    printf("Comparação de cartas (Atributo: População):\n\n");
+    printf("Carta 1 - %s (%s): %d habitantes\n", hc_nomeCidade1, hc_estado1, hc_populacao1);
+    printf("Carta 2 - %s (%s): %d habitantes\n", hc_nomeCidade2, hc_estado2, hc_populacao2);
+    printf("----------------------------------------\n");
+
+    if (hc_populacao1 > hc_populacao2) {
+        printf("Resultado: Carta 1 (%s) venceu!\n", hc_nomeCidade1);
+    } else if (hc_populacao2 > hc_populacao1) {
+        printf("Resultado: Carta 2 (%s) venceu!\n", hc_nomeCidade2);
+    } else {
+        printf("Resultado: Empate!\n");
+    }
 
     return 0;
 }
