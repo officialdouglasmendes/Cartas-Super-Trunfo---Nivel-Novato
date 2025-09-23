@@ -3,27 +3,30 @@
 #include <string.h>
 
 int main() {
+    // Bloco 1: Código da Batalha Completa e Interativa
     char bufferDeEntrada[100];
 
     char estado1;
     char codigoCarta1[4];
     char nomeCidade1[50];
-    int populacao1 = 0;
+    unsigned long int populacao1 = 0;
     float area1 = 0.0;
     float pib1 = 0.0;
     int pontosTuristicos1 = 0;
     float densidade1;
     float pibPerCapita1;
+    float superPoder1;
 
     char estado2;
     char codigoCarta2[4];
     char nomeCidade2[50];
-    int populacao2 = 0;
+    unsigned long int populacao2 = 0;
     float area2 = 0.0;
     float pib2 = 0.0;
     int pontosTuristicos2 = 0;
     float densidade2;
     float pibPerCapita2;
+    float superPoder2;
 
     printf("--- CADASTRO DA CARTA 1 ---\n");
 
@@ -41,7 +44,7 @@ int main() {
 
     printf("Digite a População: ");
     fgets(bufferDeEntrada, sizeof(bufferDeEntrada), stdin);
-    sscanf(bufferDeEntrada, "%d", &populacao1);
+    sscanf(bufferDeEntrada, "%lu", &populacao1);
 
     printf("Digite a Área (em km²): ");
     fgets(bufferDeEntrada, sizeof(bufferDeEntrada), stdin);
@@ -71,7 +74,7 @@ int main() {
 
     printf("Digite a População: ");
     fgets(bufferDeEntrada, sizeof(bufferDeEntrada), stdin);
-    sscanf(bufferDeEntrada, "%d", &populacao2);
+    sscanf(bufferDeEntrada, "%lu", &populacao2);
 
     printf("Digite a Área (em km²): ");
     fgets(bufferDeEntrada, sizeof(bufferDeEntrada), stdin);
@@ -87,34 +90,77 @@ int main() {
 
     densidade1 = (float)populacao1 / area1;
     pibPerCapita1 = (pib1 * 1000000000.0) / populacao1;
+    superPoder1 = (float)populacao1 + area1 + pib1 + (float)pontosTuristicos1 + pibPerCapita1 + (1.0 / densidade1);
+
     densidade2 = (float)populacao2 / area2;
     pibPerCapita2 = (pib2 * 1000000000.0) / populacao2;
+    superPoder2 = (float)populacao2 + area2 + pib2 + (float)pontosTuristicos2 + pibPerCapita2 + (1.0 / densidade2);
 
     printf("\n\n==============================\n");
-    printf("  CARTAS DO SUPER TRUNFO\n");
+    printf("  RESULTADO DA BATALHA\n");
     printf("==============================\n");
 
-    printf("\nCarta 1:\n");
-    printf("Estado: %c\n", estado1);
-    printf("Código: %s\n", codigoCarta1);
-    printf("Nome da Cidade: %s\n", nomeCidade1);
-    printf("População: %d\n", populacao1);
-    printf("Área: %.2f km²\n", area1);
-    printf("PIB: %.2f bilhões de reais\n", pib1);
-    printf("Número de Pontos Turísticos: %d\n", pontosTuristicos1);
-    printf("Densidade Populacional: %.2f hab/km²\n", densidade1);
-    printf("PIB per Capita: %.2f reais\n", pibPerCapita1);
+    printf("\nComparação de Cartas:\n");
 
-    printf("\nCarta 2:\n");
-    printf("Estado: %c\n", estado2);
-    printf("Código: %s\n", codigoCarta2);
-    printf("Nome da Cidade: %s\n", nomeCidade2);
-    printf("População: %d\n", populacao2);
-    printf("Área: %.2f km²\n", area2);
-    printf("PIB: %.2f bilhões de reais\n", pib2);
-    printf("Número de Pontos Turísticos: %d\n", pontosTuristicos2);
-    printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
-    printf("PIB per Capita: %.2f reais\n", pibPerCapita2);
+    int vitoria_pop = populacao1 > populacao2;
+    int vitoria_area = area1 > area2;
+    int vitoria_pib = pib1 > pib2;
+    int vitoria_pontos = pontosTuristicos1 > pontosTuristicos2;
+    int vitoria_dens = densidade1 < densidade2;
+    int vitoria_pib_pc = pibPerCapita1 > pibPerCapita2;
+    int vitoria_poder = superPoder1 > superPoder2;
+
+    printf("População: Carta %d venceu (%d)\n", vitoria_pop ? 1 : 2, vitoria_pop);
+    printf("Área: Carta %d venceu (%d)\n", vitoria_area ? 1 : 2, vitoria_area);
+    printf("PIB: Carta %d venceu (%d)\n", vitoria_pib ? 1 : 2, vitoria_pib);
+    printf("Pontos Turísticos: Carta %d venceu (%d)\n", vitoria_pontos ? 1 : 2, vitoria_pontos);
+    printf("Densidade Populacional: Carta %d venceu (%d)\n", vitoria_dens ? 1 : 2, vitoria_dens);
+    printf("PIB per Capita: Carta %d venceu (%d)\n", vitoria_pib_pc ? 1 : 2, vitoria_pib_pc);
+    printf("Super Poder: Carta %d venceu (%d)\n", vitoria_poder ? 1 : 2, vitoria_poder);
+
+
+    // Bloco 2: Código da Batalha Simples com Cartas Pré-Definidas (Acrescentado)
+    printf("\n\n\n========================================\n");
+    printf("  DEMONSTRAÇÃO COM CARTAS PRÉ-DEFINIDAS   \n");
+    printf("========================================\n\n");
+
+    char hc_estado1[] = "SP";
+    char hc_codigoCarta1[] = "A01";
+    char hc_nomeCidade1[] = "São Paulo";
+    int hc_populacao1 = 12396372;
+    float hc_area1 = 1521.11;
+    float hc_pib1 = 763.8;
+    int hc_pontosTuristicos1 = 150;
+
+    char hc_estado2[] = "RJ";
+    char hc_codigoCarta2[] = "B01";
+    char hc_nomeCidade2[] = "Rio de Janeiro";
+    int hc_populacao2 = 6775561;
+    float hc_area2 = 1200.32;
+    float hc_pib2 = 358.5;
+    int hc_pontosTuristicos2 = 200;
+
+    float hc_densidade1, hc_pibPerCapita1;
+    float hc_densidade2, hc_pibPerCapita2;
+
+    hc_densidade1 = (float)hc_populacao1 / hc_area1;
+    hc_pibPerCapita1 = (hc_pib1 * 1000000000) / hc_populacao1;
+
+    hc_densidade2 = (float)hc_populacao2 / hc_area2;
+    hc_pibPerCapita2 = (hc_pib2 * 1000000000) / hc_populacao2;
+    
+    printf("Comparação de cartas (Atributo: População):\n\n");
+    printf("Carta 1 - %s (%s): %d habitantes\n", hc_nomeCidade1, hc_estado1, hc_populacao1);
+    printf("Carta 2 - %s (%s): %d habitantes\n", hc_nomeCidade2, hc_estado2, hc_populacao2);
+    printf("----------------------------------------\n");
+
+    if (hc_populacao1 > hc_populacao2) {
+        printf("Resultado: Carta 1 (%s) venceu!\n", hc_nomeCidade1);
+    } else if (hc_populacao2 > hc_populacao1) {
+        printf("Resultado: Carta 2 (%s) venceu!\n", hc_nomeCidade2);
+    } else {
+        printf("Resultado: Empate!\n");
+    }
 
     return 0;
 }
